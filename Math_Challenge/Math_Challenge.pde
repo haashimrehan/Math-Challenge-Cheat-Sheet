@@ -6,6 +6,7 @@ Button next;
 boolean nextQuestion = false;
 boolean answered = false;
 boolean correct = false;
+int score = 0;
 
 void setup() {
   size(1000, 600);
@@ -43,6 +44,7 @@ void mousePressed() {
         int answer = (int)nums.x + (int)nums.y;
         if (answer == buttons[i].num) {
           println("correct");
+           score++;
           correct = true;
         } else {
           correct = false;
@@ -71,9 +73,11 @@ void draw() {
   if (answered) {
     if (correct) {
       text("Correct!", width/2, height/2 -10);
-  } else {
+     
+    } else {
       text("Incorrect!", width/2, height/2 -10);
     }
-          text("Press next to continue", width/2, height/2+20);
+    text("Press next to continue", width/2, height/2+20);
   }
+  text("Score: " + score, width- 60, 20);
 }
